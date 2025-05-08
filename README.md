@@ -20,7 +20,7 @@ singleton paymaster https://github.com/pimlicolabs/singleton-paymaster Alto
 bundler: https://github.com/pimlicolabs/alto
 
 [3] ZeroDev ZeroDev is the most powerful toolkit for building with smart
-accounts, including both “smart EOAs” (EIP-7702) and “smart contract accounts”
+accounts, including both "smart EOAs" (EIP-7702) and "smart contract accounts"
 (ERC-4337). https://docs.zerodev.app/ bundler:
 https://github.com/zerodevapp/ultra-relay
 
@@ -28,7 +28,7 @@ https://github.com/zerodevapp/ultra-relay
 with the most secure, cost-efficient, and extensible smart accounts. Account
 Abstraction Solution: https://www.alchemy.com/account-contracts
 
-[5] Stackup Stackup’s collaborative self-custody wallet offers invoicing, bill
+[5] Stackup Stackup's collaborative self-custody wallet offers invoicing, bill
 payments, and financial controls for how companies actually operate. Account
 Abstraction Solution: https://www.stackup.fi/
 
@@ -76,19 +76,81 @@ jobs:
 
 ### Pimlico
 
-#### Introduce
+#### 介绍
 
-#### Key products
+Pimlico是一个专注于账户抽象(Account Abstraction)的基础设施平台，提供可靠、高性能的ERC-4337实现。Pimlico的服务主要包括Bundler和Paymaster，旨在帮助开发者轻松实现无Gas交易和改善用户体验。
 
-#### Key abilities
+#### 主要产品
 
-#### Demo
+1. **Bundler**: 高性能的ERC-4337 UserOperation处理服务
+2. **Verifying Paymaster**: 允许开发者代替用户支付Gas费用
+3. **ERC-20 Paymaster**: 支持使用ERC-20代币支付Gas费用
+4. **Singleton Paymaster**: 开源的通用Paymaster合约
+5. **Alto Bundler**: 基于TypeScript的高性能Bundler实现
 
-#### How to use
+#### 关键能力
 
-#### Summary
+1. 跨链支持：支持多条主流EVM兼容区块链
+2. 开发者工具：提供完整的SDK和API
+3. 赞助政策管理：可定制的Gas赞助策略
+4. 高可靠性和性能：高可用性基础设施和低延迟交易处理
 
-Include evaluation and analysis.
+#### 示例演示
+
+通过[Pimlico的教程](https://docs.pimlico.io/tutorial/tutorial-1)，我们实现了一个基于Safe智能合约钱包的无Gas交易示例。示例使用TypeScript、Viem和permissionless.js库，完整演示了账户创建、交易构建和Gas赞助流程。
+
+主要步骤包括：
+1. 创建Safe智能账户
+2. 设置Pimlico客户端(Bundler和Paymaster)
+3. 构建交易
+4. 通过Paymaster请求Gas赞助
+5. 使用Bundler发送UserOperation到链上
+
+#### 使用方法
+
+安装依赖：
+```bash
+npm install permissionless viem
+```
+
+基本用法：
+
+```typescript
+// 创建Pimlico客户端
+const pimlicoClient = createPimlicoClient({
+  transport: http(pimlicoUrl),
+  entryPoint: { address: entryPoint07Address, version: "0.7" },
+})
+
+// 创建智能账户客户端
+const smartAccountClient = createSmartAccountClient({
+  account,
+  bundlerTransport: http(pimlicoUrl),
+  paymaster: pimlicoClient,
+})
+
+// 发送无Gas交易
+const txHash = await smartAccountClient.sendTransaction({
+  to: targetAddress,
+  data: "0x1234",
+})
+```
+
+#### 评估总结
+
+Pimlico提供了成熟的账户抽象解决方案，具有以下特点：
+
+1. **主要功能**：完整的ERC-4337基础设施，优化无Gas onboarding和DApp中的Gas赞助体验
+2. **开发者复杂度**：中等学习曲线，高质量文档，完善SDK支持
+3. **第三方ERC20支持**：支持多种主流ERC-20代币，实时定价机制
+4. **Gas赞助方式**：API密钥授权，可定制赞助政策，支持Webhook验证
+5. **开源状态**：核心组件开源，基础设施作为服务提供
+6. **SDK能力**：permissionless.js提供智能账户管理、UserOperation构建、Bundler交互等功能
+
+**优点**：优秀的开发者体验，高性能基础设施，强大的跨链支持，灵活的Gas赞助机制
+**缺点**：API密钥方式需要中心化管理，作为服务使用时存在依赖风险
+
+总体而言，Pimlico为注重用户体验的DApp开发者提供了全面且专业的账户抽象实现方案，是目前该领域最成熟的解决方案之一。
 
 ### ZeroDev
 
