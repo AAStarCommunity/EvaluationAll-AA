@@ -235,35 +235,137 @@ ZeroDev已经在超过30个网络上支持超过400万个智能账户，是目�
 
 ### Coinbase
 
-#### Introduce
+#### 介绍
 
-#### Key products
+Coinbase账户抽象（Account Abstraction）解决方案是一个专注于改善区块链用户体验的工具包，通过提供Paymaster和Bundler服务，使开发者能够为用户代付交易费用并简化交易处理流程。Coinbase的AA方案主要面向在Base等Coinbase生态链上开发的应用，提供了与多个主流SDK兼容的示例和工具。
 
-#### Key abilities
+#### 主要产品
 
-#### Demo
+1. **Coinbase Verifying Paymaster**: 一个ERC-4337兼容的智能合约，通过验证签名来实现Gas费用的代付
+2. **Coinbase Bundler API**: 负责收集、验证和提交用户操作到区块链的服务
+3. **Developer Platform**: 允许开发者集成和管理账户抽象服务的完整平台
 
-#### How to use
+#### 关键能力
 
-#### Summary
+1. **无Gas用户体验**: 应用开发者可为用户代付交易费用，用户无需持有原生代币即可执行交易
+2. **多SDK兼容性**: 支持与多种智能账户SDK集成，包括Alchemy、Pimlico、ZeroDev、Wagmi和Viem
+3. **多类型智能账户支持**: 支持SimpleAccount、Safe多签账户、Kernel模块化账户和Coinbase智能账户
+4. **集成便利性**: 简单的API集成模式，针对Base链优化的性能和用户体验
 
-Include evaluation and analysis.
+#### 示例演示
+
+我们克隆了Coinbase的paymaster-bundler-examples仓库，分析了其提供的多个示例实现。这些示例展示了如何使用不同的SDK与Coinbase的Paymaster和Bundler集成来执行无Gas交易。
+
+主要步骤包括：
+1. 初始化智能账户客户端
+2. 构建交易数据（示例中为铸造NFT）
+3. 请求Paymaster赞助交易并获取签名
+4. 发送用户操作到Bundler
+5. 等待交易确认并获取交易哈希
+
+#### 使用方法
+
+安装依赖：
+```bash
+# 根据使用的SDK不同，安装相应的依赖
+# 以Alchemy示例为例
+npm install @alchemy/aa-core viem
+```
+
+基本用法（以Alchemy SDK为例）：
+```javascript
+// 创建智能账户客户端
+const smartAccountClient = createSmartAccountClient({
+    transport: transport,
+    chain: baseSepolia,
+    account: account,
+    // 配置Paymaster
+    paymasterAndData: {
+        paymasterAndData: async (userop, opts) => {
+            // 请求赞助
+            const paymasterResp = await sponsorUserOperation(userop, opts)
+            return {
+                ...userop,
+                paymasterAndData: paymasterResp.paymasterAndData
+            }
+        }
+    },
+});
+
+// 发送赞助交易
+const uo = await smartAccountClient.sendUserOperation({
+    uo: { target: contractAddress, data: callData, value: BigInt(0) },
+});
+```
 
 ### Biconomy
 
-#### Introduce
+#### 介绍
 
-#### Key products
+Biconomy是一个全面的账户抽象解决方案提供商，致力于简化区块链交易并提升用户体验。Biconomy的产品套件围绕ERC-4337标准构建，为开发者提供了完整的工具链，使应用能够实现无缝的区块链交互。Biconomy特别关注跨链用户体验，提供了多链部署和操作的能力。
 
-#### Key abilities
+#### 主要产品
 
-#### Demo
+1. **Modular Smart Account**: 基于ERC-7579标准构建的模块化智能账户，支持各种功能插件
+2. **Biconomy SDK**: 用于集成和管理智能账户的TypeScript库
+3. **Bundlers & Paymasters**: 完整的交易处理和费用赞助基础设施
+4. **Modular Execution Environment (MEE)**: 支持跨链操作的执行环境
+5. **Smart EOAs**: 基于EIP-7702，允许现有EOA账户使用账户抽象功能
 
-#### How to use
+#### 关键能力
 
-#### Summary
+1. **跨链抽象**: 隐藏多链交互复杂性，提供统一的资金和资产访问
+2. **模块化灵活性**: 支持ERC-7579模块系统，包括ECDSA、多签和会话密钥等验证模块
+3. **高性能执行**: 优化的智能账户实现、批处理交易功能和高吞吐量的Bundler服务
+4. **开发者友好**: 全面的SDK和API支持，丰富的文档和示例
 
-Include evaluation and analysis.
+#### 示例演示
+
+我们克隆了Biconomy的paymasters仓库，分析了其实现的Verifying Paymaster和Token Paymaster合约。这些合约展示了Biconomy如何处理Gas赞助和ERC20代币支付。
+
+主要功能包括：
+1. Singleton Verifying Paymaster作为统一的赞助服务
+2. Token Paymaster允许用户使用ERC20代币支付交易费用
+3. 模块化验证系统支持各种验证策略
+4. Omnichain Paymaster实现跨链Gas抽象
+
+#### 使用方法
+
+安装依赖：
+```bash
+npm install @biconomy/account @biconomy/bundler @biconomy/paymaster @biconomy/common @biconomy/core-types viem
+```
+
+基本用法：
+```javascript
+// 创建基础设施实例
+const bundler = new Bundler({
+  bundlerUrl,
+  chainId: ChainId.POLYGON_MUMBAI,
+  entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
+});
+
+const paymaster = new BiconomyPaymaster({
+  paymasterUrl: paymasterApiKey
+});
+
+// 创建智能账户
+const smartAccount = await BiconomySmartAccountV2.create({
+  chainId: ChainId.POLYGON_MUMBAI,
+  bundler,
+  paymaster,
+  // 配置验证模块
+  defaultValidationModule: await ECDSAOwnershipValidationModule.create({
+    signer: wallet
+  })
+});
+
+// 构建并发送交易
+const userOp = await smartAccount.buildUserOp([transaction]);
+const paymasterAndDataResponse = await smartAccount.paymaster.getPaymasterAndData(userOp);
+userOp.paymasterAndData = paymasterAndDataResponse.paymasterAndData;
+const userOpResponse = await smartAccount.sendUserOp(userOp);
+```
 
 ### Stackup
 
@@ -381,3 +483,16 @@ Include evaluation and analysis.
 
 online table:
 https://docs.google.com/spreadsheets/d/1moSf9YBlGXoemydpC7eYDjs6oQa2JdHplg7L6a4kTkU/edit?usp=sharing
+
+## 解决方案清单
+
+目前已完成评估的账户抽象解决方案：
+
+1. [Pimlico](evaluations/pimlico/README.md) - 专注于Bundler和Paymaster服务的AA基础设施提供商
+2. [ZeroDev](evaluations/zerodev/README.md) - 提供Kernel智能账户和插件系统的AA开发平台
+3. [Alchemy](evaluations/alchemy/README.md) - 提供Account Kit、Rundler、Gas Manager和Modular Account的综合AA方案
+4. [Coinbase](evaluations/coinbase/README.md) - 专注于Base生态系统的Paymaster和Bundler服务
+5. [Biconomy](evaluations/biconomy/README.md) - 提供多链账户抽象和模块化智能账户的全栈AA方案
+6. [Particle Network](evaluations/particle/README.md) - 提供社交登录入驻和跨链账户抽象的Smart Wallet-as-a-Service方案
+
+每个解决方案目录包含详细的评估报告和部署测试指南。
