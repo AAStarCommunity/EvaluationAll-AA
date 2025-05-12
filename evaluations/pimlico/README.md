@@ -193,3 +193,136 @@ Pimlico提供完整的账户抽象基础设施，重点优化了以下用户场�
 Pimlico为账户抽象实现提供了非常全面和专业的解决方案，特别适合注重用户体验的DApp开发者。他们的工具链成熟且易于集成，文档和教程质量高，对开发者非常友好。在Gas赞助和无Gas交易方面的能力尤为突出，可以显著改善Web3应用的用户体验。
 
 虽然作为中心化服务存在一定依赖性，但开源核心组件使开发者有自行部署的选择。总体而言，Pimlico是目前账户抽象领域最成熟和完善的解决方案之一。 
+
+
+## Run
+
+
+===
+pnpm start
+
+> pimlico-tutorial-template@1.0.0 start /Users/nicolasshuaishuai/dev/aastar/AAStar-Demo/pimlico-tutorial-example
+> tsx index.ts
+
+Hello world!
+Public and Pimlico clients created.
+Using private key: ********** (loaded)
+Pimlico API Key used: ********** (loaded)
+Smart account (Safe) generated with address: 0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+Smart account client created for address: 0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+View your smart account on Base Sepolia: https://sepolia.basescan.org/address/0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+Smart account USDC balance: 9.998463 USDC
+
+Attempting to send a transaction from the smart account...
+Approving Pimlico Verifying Paymaster (0x777777777777AeC03fd955926DbF81597e66834C) to spend USDC...
+Transaction hash: 0xe6643d7c1e0e3854df827b795cfdffd8330c12116c63b8b61eac57f3591b1bbe
+User operation included: https://sepolia.basescan.org/tx/0xe6643d7c1e0e3854df827b795cfdffd8330c12116c63b8b61eac57f3591b1bbe
+
+Tutorial completed successfully!
+
+===
+pnpm start
+
+> pimlico-tutorial-template@1.0.0 start /Users/nicolasshuaishuai/dev/aastar/AAStar-Demo/pimlico-verifying-tutorial
+> tsx index.ts
+
+Starting Pimlico Verifying Paymaster Tutorial (Tutorial 1 adapted)...
+Private key loaded/generated.
+Public client for Sepolia created.
+Pimlico client for Sepolia created.
+
+Starting main execution for Verifying Paymaster tutorial...
+Smart account address (Sepolia): https://sepolia.etherscan.io/address/0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+SmartAccountClient created for address: 0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+Attempting to send a transaction to 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 using Verifying Paymaster...
+Transaction hash: 0x23c1152b349630f1654e3baf0d430965d3a0bcde2e315b0610b1a8c6853cd7ca
+User operation included: https://sepolia.etherscan.io/tx/0x23c1152b349630f1654e3baf0d430965d3a0bcde2e315b0610b1a8c6853cd7ca
+
+Verifying Paymaster tutorial script completed successfully!
+
+====
+
+
+(base) ➜  pimlico-tutorial-example git:(main) ✗ pnpm start
+
+> pimlico-tutorial-template@1.0.0 start /Users/nicolasshuaishuai/dev/aastar/EvaluationAllPaymaster/evaluations/pimlico/pimlico-tutorial-example
+> tsx index.ts
+
+Hello world!
+Public and Pimlico clients created.
+Using private key: ********** (loaded)
+Pimlico API Key used: ********** (loaded)
+Smart account (Safe) generated with address: 0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+Smart account client created for address: 0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+View your smart account on Base Sepolia: https://sepolia.basescan.org/address/0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+Smart account USDC balance: 9.997819 USDC
+
+Attempting to send a transaction from the smart account...
+Approving Pimlico Verifying Paymaster (0x777777777777AeC03fd955926DbF81597e66834C) to spend USDC...
+Transaction hash: 0xdd38d39bbe9d84478a6bea3bdf8e6d85968f45abcb47113baabfe5e1aa520b32
+User operation included: https://sepolia.basescan.org/tx/0xdd38d39bbe9d84478a6bea3bdf8e6d85968f45abcb47113baabfe5e1aa520b32
+
+Tutorial completed successfully!
+^C ELIFECYCLE  Command failed with exit code 130.
+(base) ➜  pimlico-tutorial-example git:(main) ✗ cd 。。
+cd: no such file or directory: 。。
+(base) ➜  pimlico-tutorial-example git:(main) ✗ ls    
+LICENSE           README.md         index.ts          node_modules      package-lock.json package.json      pnpm-lock.yaml    tsconfig.json
+(base) ➜  pimlico-tutorial-example git:(main) ✗ cd 。。
+cd: no such file or directory: 。。
+(base) ➜  pimlico-tutorial-example git:(main) ✗ CD ..
+(base) ➜  pimlico-tutorial-example git:(main) ✗ LS
+LICENSE                 README.md               index.ts                node_modules            package-lock.json       package.json            pnpm-lock.yaml          tsconfig.json
+(base) ➜  pimlico-tutorial-example git:(main) ✗ ls
+LICENSE           README.md         index.ts          node_modules      package-lock.json package.json      pnpm-lock.yaml    tsconfig.json
+(base) ➜  pimlico-tutorial-example git:(main) ✗ pwd
+/Users/nicolasshuaishuai/dev/aastar/EvaluationAllPaymaster/evaluations/pimlico/pimlico-tutorial-example
+(base) ➜  pimlico-tutorial-example git:(main) ✗ cd 。。
+cd: no such file or directory: 。。
+(base) ➜  pimlico-tutorial-example git:(main) ✗ cd ..
+(base) ➜  pimlico git:(main) ✗ cd pimlico-verifying-tutorial 
+(base) ➜  pimlico-verifying-tutorial git:(main) ✗ pnpm install
+Lockfile is up to date, resolution step is skipped
+Packages: +25
++++++++++++++++++++++++++
+Progress: resolved 25, reused 25, downloaded 0, added 25, done
+
+dependencies:
++ dotenv 16.5.0
++ permissionless 0.2.46
++ viem 2.29.2
+
+devDependencies:
++ @types/node 20.17.46
++ tsx 3.14.0
+
+╭ Warning ───────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                            │
+│   Ignored build scripts: esbuild.                                                          │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.   │
+│                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Done in 1s using pnpm v10.9.0
+(base) ➜  pimlico-verifying-tutorial git:(main) ✗ ls
+LICENSE           README.md         index.ts          node_modules      package-lock.json package.json      pnpm-lock.yaml    tsconfig.json
+(base) ➜  pimlico-verifying-tutorial git:(main) ✗ pnpm start
+
+> pimlico-tutorial-template@1.0.0 start /Users/nicolasshuaishuai/dev/aastar/EvaluationAllPaymaster/evaluations/pimlico/pimlico-verifying-tutorial
+> tsx index.ts
+
+Starting Pimlico Verifying Paymaster Tutorial (Tutorial 1 adapted)...
+Private key loaded/generated.
+Public client for Sepolia created.
+Pimlico client for Sepolia created.
+
+Starting main execution for Verifying Paymaster tutorial...
+Smart account address (Sepolia): https://sepolia.etherscan.io/address/0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+SmartAccountClient created for address: 0x2D2145fd3429922e16771E9DA4AF6062E7EabD45
+Attempting to send a transaction to 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 using Verifying Paymaster...
+Transaction hash: 0x7ed9e066abd1870a27607ff86ac05eafd535355e1cf7e0ca2b298d0f3c0e4ae3
+User operation included: https://sepolia.etherscan.io/tx/0x7ed9e066abd1870a27607ff86ac05eafd535355e1cf7e0ca2b298d0f3c0e4ae3
+
+Verifying Paymaster tutorial script completed successfully!
+^C ELIFECYCLE  Command failed with exit code 130.
+(base) ➜  pimlico-verifying-tutorial git:(main) ✗ 
