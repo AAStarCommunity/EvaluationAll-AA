@@ -1,0 +1,3 @@
+[submodule "evaluations/pimlico/evaluations/pimlico/pimlico-verifying-tutorial"]
+	path = evaluations/pimlico/evaluations/pimlico/pimlico-verifying-tutorial
+	url = https://github.com/pimlicolabs/tutorial-template.git
