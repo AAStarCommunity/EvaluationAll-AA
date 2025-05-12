@@ -200,7 +200,8 @@ git submodule add  https://github.com/pimlicolabs/tutorial-template.git evaluati
 
 git submodule add https://github.com/pimlicolabs/tutorial-template.git evaluations/pimlico/pimlico-tutorial-example
 
-replate index.ts
+replate index.ts with two file outside:toutorial-index.ts,verifying-index.ts
+then pnpm start,got below:
 
 ===
 pnpm start
