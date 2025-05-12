@@ -11,7 +11,7 @@ detail evaluation:
 5. [Biconomy](evaluations/biconomy/README.md) - 提供多链账户抽象和模块化智能账户的全栈AA方案
 6. [Particle Network](evaluations/particle/README.md) - 提供社交登录入驻和跨链账户抽象的Smart Wallet-as-a-Service方案
 7. [Stackup](evaluations/stackup/README.md) - 提供企业级账户抽象解决方案，包括智能钱包、Bundler和Paymaster服务
-[aastar](aastar/README.md) TODO
+8. [AAStar](aastar/README.md) TODO
 
 ## List
 
