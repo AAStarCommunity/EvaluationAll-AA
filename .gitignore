@@ -2,6 +2,9 @@
 node_modules/
 evaluations/.DS_Store
 evaluations/pimlico/pimlico-tutorial-1/
+evaluations/pimlico/pimlico-verifying-tutorial/
+evaluations/pimlico/pimlico-tutorial-example/
+
 # Logs
 logs
 *.log

@@ -196,7 +196,11 @@ Pimlico为账户抽象实现提供了非常全面和专业的解决方案，特�
 
 
 ## Run
+git submodule add  https://github.com/pimlicolabs/tutorial-template.git evaluations/pimlico/pimlico-verifying-tutorial
 
+git submodule add https://github.com/pimlicolabs/tutorial-template.git evaluations/pimlico/pimlico-tutorial-example
+
+replate index.ts
 
 ===
 pnpm start
@@ -326,3 +330,5 @@ User operation included: https://sepolia.etherscan.io/tx/0x7ed9e066abd1870a27607
 Verifying Paymaster tutorial script completed successfully!
 ^C ELIFECYCLE  Command failed with exit code 130.
 (base) ➜  pimlico-verifying-tutorial git:(main) ✗ 
+
+
