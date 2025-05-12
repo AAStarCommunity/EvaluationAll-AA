@@ -3,6 +3,15 @@
 We collect Pimlico，Alchemy，Stackup，ZeroDev，Coinbase，Biconomy and Particle,
 their solution and demo, to practice the gasless account abstraction solution.
 It is a investigation on the gasless account abstraction solution.
+detail evaluation:
+1. [Pimlico](evaluations/pimlico/README.md) - 专注于Bundler和Paymaster服务的AA基础设施提供商
+2. [ZeroDev](evaluations/zerodev/README.md) - 提供Kernel智能账户和插件系统的AA开发平台
+3. [Alchemy](evaluations/alchemy/README.md) - 提供Account Kit、Rundler、Gas Manager和Modular Account的综合AA方案
+4. [Coinbase](evaluations/coinbase/README.md) - 专注于Base生态系统的Paymaster和Bundler服务
+5. [Biconomy](evaluations/biconomy/README.md) - 提供多链账户抽象和模块化智能账户的全栈AA方案
+6. [Particle Network](evaluations/particle/README.md) - 提供社交登录入驻和跨链账户抽象的Smart Wallet-as-a-Service方案
+7. [Stackup](evaluations/stackup/README.md) - 提供企业级账户抽象解决方案，包括智能钱包、Bundler和Paymaster服务
+[aastar](aastar/README.md) TODO
 
 ## List
 
@@ -367,21 +376,6 @@ userOp.paymasterAndData = paymasterAndDataResponse.paymasterAndData;
 const userOpResponse = await smartAccount.sendUserOp(userOp);
 ```
 
-### Stackup
-
-#### Introduce
-
-#### Key products
-
-#### Key abilities
-
-#### Demo
-
-#### How to use
-
-#### Summary
-
-Include evaluation and analysis.
 
 ### Alchemy
 
@@ -447,7 +441,50 @@ const hash = await smartAccountClient.sendUserOperation({
 
 Alchemy提供了一套全面、集成的账户抽象解决方案，具有企业级的安全性和性能。其Modular Account系统通过ERC-6900标准支持灵活的插件扩展，而Rundler作为高性能Bundler实现，提供了可靠的UserOperation处理能力。对EIP-7702的支持使现有EOA用户能够平滑升级到智能账户体验，无需迁移资产，这是推动账户抽象大规模采用的重要一步。
 
-### Particle
+
+### Particle Network
+
+#### 介绍
+
+Particle Network是一个全面的账户抽象解决方案提供商，专注于通过智能钱包即服务（Smart Wallet-as-a-Service）和链抽象（Chain Abstraction）简化Web3用户体验。Particle Network的产品套件旨在解决区块链的碎片化问题，为用户提供统一的账户和资产体验。
+
+#### 主要产品
+
+1. **Smart Wallet-as-a-Service (WaaS)**：统一的Web3登录服务和智能账户集成
+2. **Omnichain Paymaster**：跨链Gas赞助服务，支持单一USDT存款
+3. **Particle Bundler**：开源的多链交易处理服务
+4. **BTC Connect**：比特币账户抽象协议
+5. **Universal Accounts**：跨链统一账户服务（即将推出）
+
+#### 关键能力
+
+- **社交登录和无缝入驻**：支持多种社交登录方式，MPC-TSS技术保障私钥安全
+- **跨链账户抽象**：隐藏多链交互复杂性，提供统一Gas赞助服务
+- **灵活的开发工具**：支持多平台SDK，模块化配置的智能账户实现
+- **安全和合规**：采用MPC-TSS 2/2高级阈值签名方案，私钥分片存储
+
+### Stackup
+
+#### 介绍
+
+Stackup是一个专注于企业级账户抽象解决方案的提供商，致力于为企业提供安全、易用的数字资产管理平台。通过ERC-4337标准实现账户抽象，使企业能够以更高效、更灵活的方式管理加密资产和执行区块链交易。
+
+#### 主要产品
+
+1. **企业级智能钱包**：基于ERC-4337的自托管钱包，支持角色访问控制和Passkey认证
+2. **Stackup Bundler**：Go语言实现的高性能ERC-4337 Bundler
+3. **Paymaster服务**：支持零Gas费交易和ERC-20代币支付
+4. **开发者API**：用于构建和集成账户抽象功能的完整工具集
+
+#### 关键能力
+
+- **企业级自托管**：真正的资产所有权，ERC-4337智能合约安全，跨链统一体验
+- **高级协作功能**：基于角色的访问控制，签名请求，预定和批量交易
+- **优化的Gas处理**：支持无需本地代币，ERC-20支付，企业Paymaster
+- **企业级安全和合规**：通过审计的智能账户合约，基于Passkey的身份验证，SOC2 Type 2合规（进行中）
+
+
+### AAStar/SuperPaymaster
 
 #### Introduce
 
@@ -461,42 +498,14 @@ Alchemy提供了一套全面、集成的账户抽象解决方案，具有企业�
 
 #### Summary
 
-Include evaluation and analysis.
 
-### SuperPaymaster
-
-#### Introduce
-
-#### Key products
-
-#### Key abilities
-
-#### Demo
-
-#### How to use
-
-#### Summary
-
-Include evaluation and analysis.
 
 ## Analysis table online
 
 online table:
 https://docs.google.com/spreadsheets/d/1moSf9YBlGXoemydpC7eYDjs6oQa2JdHplg7L6a4kTkU/edit?usp=sharing
 
-## 解决方案清单
 
-目前已完成评估的账户抽象解决方案：
-
-1. [Pimlico](evaluations/pimlico/README.md) - 专注于Bundler和Paymaster服务的AA基础设施提供商
-2. [ZeroDev](evaluations/zerodev/README.md) - 提供Kernel智能账户和插件系统的AA开发平台
-3. [Alchemy](evaluations/alchemy/README.md) - 提供Account Kit、Rundler、Gas Manager和Modular Account的综合AA方案
-4. [Coinbase](evaluations/coinbase/README.md) - 专注于Base生态系统的Paymaster和Bundler服务
-5. [Biconomy](evaluations/biconomy/README.md) - 提供多链账户抽象和模块化智能账户的全栈AA方案
-6. [Particle Network](evaluations/particle/README.md) - 提供社交登录入驻和跨链账户抽象的Smart Wallet-as-a-Service方案
-7. [Stackup](evaluations/stackup/README.md) - 提供企业级账户抽象解决方案，包括智能钱包、Bundler和Paymaster服务
-
-每个解决方案目录包含详细的评估报告和部署测试指南。
 
 ## 账户抽象解决方案综合评估与对比
 
