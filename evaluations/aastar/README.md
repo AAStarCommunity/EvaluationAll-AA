@@ -2,20 +2,20 @@
 
 ## 介绍
 
-AAStar是一个社区版的账户抽象(Account Abstraction)全生命周期解决方案，支持ERC-4337和EIP-7702以及未来的RIP7560标准的账户和交易。AAStar核心是服务社区，提供去中心的账户计算服务和开源框架，提供是双签名（指纹+TEE）、支持三组合（个人+亲友+社区）社交恢复，支持一键搬家、支持社区自定义ERC20支付gas、支持NFT/SBT无感认证免gas、支持和社区积分打通支付gas等features。
+AAStar是一个社区版的账户抽象(Account
+Abstraction)全生命周期解决方案，支持ERC-4337和EIP-7702以及未来的RIP7560标准的账户和交易。AAStar核心是服务社区，提供去中心的账户计算服务和开源框架，提供是双签名（指纹+TEE）、支持三组合（个人+亲友+社区）社交恢复，支持一键搬家、支持社区自定义ERC20支付gas、支持NFT/SBT无感认证免gas、支持和社区积分打通支付gas等features。
 
 ## 主要产品
 
-1. **Kernel**:
+1. **Core**:
    - 简单不可升级，易用安全，基于SimpleAccount增加了双签名
    - 支持ERC20 定制gas token
    - 分层安全机制，根据资产特性和规模来均衡易用性和安全
    - 支持多种验证器（ECDSA、Passkey、多签等）
    - 团队成员曾获得以太坊AA first prize和EF grant
 
-
 2. **AAStar SDK**:
-   - 基于Kernel的智能账户开发工具包，包括SuperPaymaster
+   - 基于Core的智能账户开发工具包，包括SuperPaymaster
    - 支持多种身份绑定和验证方式（Web2，Email，SMS and more）
    - 提供丰富的API接口用于交易、会话密钥管理等
    - 与第三方Auth集成(如Auth.js等)集成
@@ -85,11 +85,11 @@ AAStar是一个社区版的账户抽象(Account Abstraction)全生命周期解�
 
 ## Demo
 
-掩饰各种功能：
+展示各种功能：
 
 1. **创建账户**:
-   - 使用ECDSA验证器创建Kernel账户
-   - 通过ZeroDev Paymaster发送无Gas交易
+   - 使用ECDSA验证器创建账户
+   - 通过中心化或者去中心化Paymaster发送无Gas交易
    - 验证UserOperation上链过程
 
 2. **会话密钥**:
@@ -163,6 +163,7 @@ const userOpHash = await kernelClient.sendUserOperation({
 ### 主要功能和用户场景
 
 AAStar高度贴合社区，特别适合以下用户场景：
+
 - 新人快速onboarding
 - 无Gas入门体验
 - 基于Passkey的无助记词登录
@@ -233,3 +234,8 @@ AAStar的使命是赋能社区，是一群厌倦公司的程序员加入以太�
 AAStar的核心服务是基于RainComputing的账户全生命周期服务和打通社区任务和积分的gas无感支付SBT/NFT。
 从开源和抗审查角度看，AAStar是最好的社区版本，每个社区开源200U运行起来一个社区节点，无论是加密还是数字游民，是KOL还是同好俱乐部，都是社区，可以基于AAStar提供的全套工具，建立自己的积分、任务和声望体系，完成社区围绕账户为核心的onbaording、check和激励。
 我们有了很多商业化公司，提供很棒的账户、gas代付和凭证管理等服务。但从多样性角度看，区块链行业需要借鉴开源社区思路，建立类似于Windows和Linux关系的社区版本生态，而账户是一切加密的起点和核心。社区版本的核心优点是社区视角更贴切，去中心计算更彻底，更符合区块链的精神价值观。
+
+## 设计思路
+
+1. 使用viem配合核心sdk、airaccount等sdk，基于公共物品构建公共物品。
+2.

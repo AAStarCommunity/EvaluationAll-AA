@@ -2,7 +2,8 @@
 
 ## 介绍
 
-ZeroDev是一个强大的账户抽象(Account Abstraction)解决方案，提供支持ERC-4337和EIP-7702的智能账户系统。ZeroDev专注于提供最佳的Web3用户体验，通过解决密钥管理、交易费用和跨链操作等问题，使Web3应用更易用、更灵活。
+ZeroDev是一个强大的账户抽象(Account
+Abstraction)解决方案，提供支持ERC-4337和EIP-7702的智能账户系统。ZeroDev专注于提供最佳的Web3用户体验，通过解决密钥管理、交易费用和跨链操作等问题，使Web3应用更易用、更灵活。
 
 ## 主要产品
 
@@ -117,42 +118,42 @@ npm install @zerodev/sdk @zerodev/ecdsa-validator viem
 ```typescript
 // 创建智能账户
 const ecdsaValidator = await signerToEcdsaValidator(publicClient, {
-  entryPoint,
-  signer,
-  kernelVersion: KERNEL_V3_1,
+   entryPoint,
+   signer,
+   kernelVersion: KERNEL_V3_1,
 });
 
 const account = await createKernelAccount(publicClient, {
-  entryPoint,
-  plugins: {
-    sudo: ecdsaValidator,
-  },
-  kernelVersion: KERNEL_V3_1,
+   entryPoint,
+   plugins: {
+      sudo: ecdsaValidator,
+   },
+   kernelVersion: KERNEL_V3_1,
 });
 
 // 创建Paymaster客户端
 const paymasterClient = createZeroDevPaymasterClient({
-  chain,
-  transport: http(process.env.ZERODEV_RPC),
+   chain,
+   transport: http(process.env.ZERODEV_RPC),
 });
 
 // 创建账户客户端
 const kernelClient = createKernelAccountClient({
-  account,
-  chain,
-  bundlerTransport: http(process.env.ZERODEV_RPC),
-  paymaster: paymasterClient,
+   account,
+   chain,
+   bundlerTransport: http(process.env.ZERODEV_RPC),
+   paymaster: paymasterClient,
 });
 
 // 发送交易
 const userOpHash = await kernelClient.sendUserOperation({
-  callData: await account.encodeCalls([
-    {
-      to: targetAddress,
-      value: parseEther("0.01"),
-      data: "0x",
-    },
-  ]),
+   callData: await account.encodeCalls([
+      {
+         to: targetAddress,
+         value: parseEther("0.01"),
+         data: "0x",
+      },
+   ]),
 });
 ```
 
@@ -161,6 +162,7 @@ const userOpHash = await kernelClient.sendUserOperation({
 ### 主要功能和用户场景
 
 ZeroDev提供的Kernel智能账户通过插件系统支持多种功能，特别适合以下用户场景：
+
 - 无Gas入门体验
 - 基于Passkey的无助记词登录
 - 自动化交易和AI代理
@@ -229,6 +231,20 @@ ZeroDev提供的Kernel智能账户通过插件系统支持多种功能，特别�
 
 ZeroDev是一个功能全面、设计精良的账户抽象解决方案，特别是其Kernel智能账户和插件系统使其在ERC-4337实现中脱颖而出。它支持EIP-7702，为用户提供了选择使用传统EOA还是智能合约账户的灵活性。
 
-模块化设计使开发者能够根据需要构建定制功能，同时Meta Infrastructure通过代理多个提供商增加了系统的可靠性。多种认证方式的支持(从Passkey到社交登录)使其非常适合面向最终用户的应用。
+模块化设计使开发者能够根据需要构建定制功能，同时Meta
+Infrastructure通过代理多个提供商增加了系统的可靠性。多种认证方式的支持(从Passkey到社交登录)使其非常适合面向最终用户的应用。
 
-ZeroDev已经在超过30个网络上支持超过400万个智能账户，是目前市场上最成熟、最被广泛使用的账户抽象解决方案之一。对于希望实现无缝用户体验的Web3应用来说，ZeroDev提供了一套强大而灵活的工具。 
+ZeroDev已经在超过30个网络上支持超过400万个智能账户，是目前市场上最成熟、最被广泛使用的账户抽象解决方案之一。对于希望实现无缝用户体验的Web3应用来说，ZeroDev提供了一套强大而灵活的工具。
+
+## 组件评估
+
+1. 新增了意图组件，猜测是依赖自身的服务提供了了跨链服务，还没看代码，demo：https://github.com/zerodevapp/zerodev-examples/blob/main/intent/main.ts
+2. 相关介绍： ZeroDev is the first smart account solution to support cross-chain
+   transactions, also sometimes known as "chain abstraction."
+
+More specifically, a ZeroDev smart account can use its tokens from one chain on
+another chain, without bridging. Some examples are:
+
+Stake ETH on Ethereum mainnet using ETH on Polygon. Spend USDC on Base to
+purchase an NFT sold in USDT on Arbitrum. Execute a transaction on Blast by
+paying gas in DAI from Optimism.
