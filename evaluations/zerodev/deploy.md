@@ -13,7 +13,7 @@ npm -v
 2. 克隆ZeroDev示例代码
 
 ```bash
-git clone https://github.com/zerodevapp/zerodev-examples.git zerodev-tutorial
+git clone https://github.com/AAStarCommunity/zerodev-examples.git  zerodev-tutorial
 cd zerodev-tutorial
 ```
 
