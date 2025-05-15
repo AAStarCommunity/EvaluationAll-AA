@@ -484,21 +484,6 @@ Stackup是一个专注于企业级账户抽象解决方案的提供商，致力�
 - **企业级安全和合规**：通过审计的智能账户合约，基于Passkey的身份验证，SOC2 Type 2合规（进行中）
 
 
-### AAStar/SuperPaymaster
-
-#### Introduce
-
-#### Key products
-
-#### Key abilities
-
-#### Demo
-
-#### How to use
-
-#### Summary
-
-
 
 ## Analysis table online
 
