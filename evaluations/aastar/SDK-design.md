@@ -124,3 +124,15 @@ bundler knows it will pay, so there is no longer a possible of denial of service
 attack. The executed code of the UserOp can do whatever it pleases - the UserOp
 is already guaranteed to pay. Just like normal transaction, the user pays even
 if the UserOp (or transaction) reverts.
+
+### Bundler
+
+官方技术规格 https://github.com/eth-infinitism/bundler-spec/tree/main
+https://github.com/eth-infinitism/bundler-spec-tests
+https://github.com/eth-infinitism/bundler
+https://github.com/eth-infinitism/bundler/blob/master/packages/sdk/README.md
+
+### Paymaster
+
+基于zerodev的ultra relay（合并Paymaster和bundler了）
+和particle的跨链特性的bundler
