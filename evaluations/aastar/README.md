@@ -1,9 +1,12 @@
 # AAStar评估报告
 
 ## 介绍
+SDK最新内容在：[https://github.com/AAStarCommunity/AAStar_SDK](https://github.com/AAStarCommunity/AAStar_SDK)
+AAStar是一个开源社区组织，提供社区版（非商业公司支持的版本）的账户抽象(Account
+Abstraction)全生命周期解决方案，支持ERC-4337和EIP-7702以及未来的RIP7560标准的账户和交易。
+AAStar的核心是服务社区，提供去中心的账户计算服务和开源框架，提供是双签名（指纹+TEE）、支持三组合（个人+亲友+社区）社交恢复，支持一键搬家、支持社区自定义ERC20支付gas、支持NFT/SBT无感认证免gas、支持和社区积分打通支付gas等features。
 
-AAStar是一个社区版的账户抽象(Account
-Abstraction)全生命周期解决方案，支持ERC-4337和EIP-7702以及未来的RIP7560标准的账户和交易。AAStar核心是服务社区，提供去中心的账户计算服务和开源框架，提供是双签名（指纹+TEE）、支持三组合（个人+亲友+社区）社交恢复，支持一键搬家、支持社区自定义ERC20支付gas、支持NFT/SBT无感认证免gas、支持和社区积分打通支付gas等features。
+
 
 ## 主要产品
 
